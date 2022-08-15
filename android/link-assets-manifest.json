@@ -1,0 +1,29 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/ComicSans-Bold.ttf",
+      "sha1": "4670365d99eb047d2fba6c3ac2a398276e37555b"
+    },
+    {
+      "path": "src/assets/fonts/ComicSans-Italic.ttf",
+      "sha1": "42722080d43013926183eea1c6a7f4b194e9aa45"
+    },
+    {
+      "path": "src/assets/fonts/ComicSans-Regular.ttf",
+      "sha1": "66f4b14c32b6a79f6d68c0f7634686b82b1aea95"
+    },
+    {
+      "path": "src/assets/fonts/OpenSans-Regular.ttf",
+      "sha1": "babe8dce93a3e48b6c3c79720a0c048e88dd1fe7"
+    },
+    {
+      "path": "src/assets/fonts/OpenSans-RegularItalic.ttf",
+      "sha1": "b8d9f5ceb1e6b3a716dab0bdd09061bbc349b41e"
+    },
+    {
+      "path": "src/assets/fonts/OpenSans-SemiBold.ttf",
+      "sha1": "e256f8391718ef61f253dfb4e95bbeb3c5857afc"
+    }
+  ]
+}
