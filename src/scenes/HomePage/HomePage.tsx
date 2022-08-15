@@ -1,17 +1,19 @@
-import {View, Text, Button} from 'react-native';
+import {Button, SafeAreaView} from 'react-native';
 import React, {FC} from 'react';
 import styles from './HomePageStyles';
+import HeaderComponent from '../../components/Header/Header';
 
-const HomeScene: FC<any> = ({navigation}) => {
+const HomePage: FC<any> = ({navigation}) => {
   return (
-    <View style={styles.mainWrapper}>
-      <Text style={styles.textStyle}>HomeScene</Text>
+    <SafeAreaView style={styles.mainWrapper}>
+      <HeaderComponent title="Film Store" />
+
       <Button
         title="Click to navigate"
         onPress={() => navigation.navigate('Details')}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 
-export default HomeScene;
+export default HomePage;
