@@ -8,3 +8,7 @@ export type Movie = {
   type: string;
   data: [];
 };
+
+export type Title = {
+  title: string;
+};
