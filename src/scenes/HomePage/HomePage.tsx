@@ -11,7 +11,7 @@ import {
 import {Movie, Category} from '../../typings';
 import Headline from '../../components/Headline/Headline';
 
-const HomePage: FC<any> = ({}) => {
+const HomePage: FC<any> = ({navigation}) => {
   const [categories, setCategories] = useState<Array<Category>>([]);
   const [allMovies, setAllMovies] = useState<Array<Movie>>([]);
 
@@ -46,16 +46,23 @@ const HomePage: FC<any> = ({}) => {
     fetchData();
   }, [categories]);
 
+  const handlePress = (movieId: number) => {
+    navigation.navigate('Details', {
+      movieId: movieId,
+    });
+  };
+
   const renderMovies = () => {
     return allMovies.map((movie: Movie) => {
       return (
         <View key={movie.key} style={styles.carouselWrapper}>
           <Headline title={movie.type} />
-          <Carousel movies={movie.data} />
+          <Carousel movies={movie.data} onPressMovie={handlePress} />
         </View>
       );
     });
   };
+
   return (
     <ScrollView style={styles.mainWrapper}>
       <>
