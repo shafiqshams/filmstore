@@ -1,13 +1,13 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
+import colors from '../../styles/colors';
+const {width} = Dimensions.get('window');
 
 export default StyleSheet.create({
   mainWrapper: {
     display: 'flex',
     flex: 1,
-    justifyContent: 'center',
+    backgroundColor: colors.black01,
     alignItems: 'center',
-  },
-  textStyle: {
-    fontSize: 18,
-  },
+    marginTop: 20,
+  }
 });
