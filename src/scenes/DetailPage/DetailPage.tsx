@@ -1,21 +1,26 @@
-import {View, Text, Button} from 'react-native';
-import React, {FC} from 'react';
+import {View} from 'react-native';
+import React, {FC, useState, useEffect, useCallback} from 'react';
 import styles from './DetailPageStyles';
+import {getMovie} from '../../services/movies/movies';
 
-const DetailPage: FC<any> = ({route, navigation}) => {
+const DetailPage: FC<any> = ({route}) => {
   const {movieId} = route.params;
   console.log('Movie ID', movieId);
-  return (
-    <View style={styles.mainWrapper}>
-      <Text style={styles.textStyle}>DetailPage</Text>
-      <Button
-        title="Click to go back"
-        onPress={() => {
-          navigation.goBack();
-        }}
-      />
-    </View>
-  );
+  const [movieDetails, setMovieDetails] = useState({});
+
+  const fetchMovie = useCallback(async () => {
+    const movie = await getMovie(movieId);
+    console.log('movie details ', movie);
+
+    setMovieDetails(movie);
+  }, [movieId]);
+  useEffect(() => {
+    fetchMovie().catch(console.error);
+  }, [fetchMovie]);
+
+  console.log('what are details ', movieDetails);
+
+  return <View style={styles.mainWrapper} />;
 };
 
 export default DetailPage;

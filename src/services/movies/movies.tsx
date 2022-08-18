@@ -16,3 +16,10 @@ export function getMoviesByCategoryId(genreId: number, page: number) {
     page: page,
   });
 }
+
+export function getMovie(movieId: any) {
+  const URL = BASE_URL + 'movie/' + movieId;
+  return getFetch(URL, {
+    api_key: API_KEY,
+  });
+}
