@@ -9,11 +9,14 @@ export default StyleSheet.create({
     backgroundColor: colors.black01,
     marginTop: 20,
   },
-  textStyle: {
-    fontSize: 18,
-  },
   carouselWrapper: {
     width: width - 30,
     margin: 15,
+  },
+  textStyle: {
+    fontSize: 32,
+    color: colors.red,
+    fontFamily: 'Weast-hood',
+    letterSpacing: 0.2,
   },
 });

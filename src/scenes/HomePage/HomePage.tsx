@@ -1,7 +1,6 @@
 import {ScrollView, View} from 'react-native';
 import React, {FC, useEffect, useState} from 'react';
 import styles from './HomePageStyles';
-import HeaderComponent from '../../components/Header/Header';
 import Carousel from '../../components/Carousel/Carousel';
 import {getRandomNumber} from '../../utils/getRandomNumber';
 import {
@@ -10,6 +9,8 @@ import {
 } from '../../services/movies/movies';
 import {Movie, Category} from '../../typings';
 import Headline from '../../components/Headline/Headline';
+import TextHeader from '../../components/TextHeader/TextHeader';
+import {APP_NAME} from '../../services/helpers/config';
 
 const HomePage: FC<any> = ({navigation}) => {
   const [categories, setCategories] = useState<Array<Category>>([]);
@@ -46,6 +47,11 @@ const HomePage: FC<any> = ({navigation}) => {
     fetchData();
   }, [categories]);
 
+  const showFavorites = () => {
+    // TODO
+    // Fetch favorites and update movies list
+  };
+
   const handlePress = (movieId: number) => {
     navigation.navigate('Details', {
       movieId: movieId,
@@ -66,7 +72,11 @@ const HomePage: FC<any> = ({navigation}) => {
   return (
     <ScrollView style={styles.mainWrapper}>
       <>
-        <HeaderComponent title="Film Store" />
+        <TextHeader
+          headerText={APP_NAME}
+          onPressFav={showFavorites}
+          textStyle={styles.textStyle}
+        />
         {renderMovies()}
       </>
     </ScrollView>
