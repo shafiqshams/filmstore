@@ -2,6 +2,14 @@
   "migIndex": 1,
   "data": [
     {
+      "path": "src/assets/fonts/BebasNeue-Bold.ttf",
+      "sha1": "05cf9bfc05427c7b10ede7f8a7c15fa437b4764c"
+    },
+    {
+      "path": "src/assets/fonts/BebasNeue-Regular.ttf",
+      "sha1": "eef7db3112d4ff2f8e161146408b196e375adc84"
+    },
+    {
       "path": "src/assets/fonts/ComicSans-Bold.ttf",
       "sha1": "4670365d99eb047d2fba6c3ac2a398276e37555b"
     },
@@ -24,6 +32,10 @@
     {
       "path": "src/assets/fonts/OpenSans-SemiBold.ttf",
       "sha1": "e256f8391718ef61f253dfb4e95bbeb3c5857afc"
+    },
+    {
+      "path": "src/assets/fonts/Weast-hood.ttf",
+      "sha1": "511841f3849911fd02f0a07b20b091461c1cd120"
     }
   ]
 }
