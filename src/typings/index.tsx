@@ -12,3 +12,11 @@ export type Movie = {
 export type Title = {
   title: string;
 };
+
+export type MovieDetails = {
+  id: number;
+  title: string;
+  tagline: string;
+  overview: string;
+  poster_path: string;
+};
