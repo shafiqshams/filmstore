@@ -9,6 +9,7 @@ import {
   getMoviesByCategoryId,
 } from '../../services/movies/movies';
 import {Movie, Category} from '../../typings';
+import Headline from '../../components/Headline/Headline';
 
 const HomePage: FC<any> = ({}) => {
   const [categories, setCategories] = useState<Array<Category>>([]);
@@ -49,6 +50,7 @@ const HomePage: FC<any> = ({}) => {
     return allMovies.map((movie: Movie) => {
       return (
         <View key={movie.key} style={styles.carouselWrapper}>
+          <Headline title={movie.type} />
           <Carousel movies={movie.data} />
         </View>
       );
