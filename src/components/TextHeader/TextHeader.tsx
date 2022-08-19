@@ -37,7 +37,7 @@ const TextHeader: FC<any> = ({
               style={[styles.iconTouchWrapper]}
               onPress={onPressFav}>
               <Image
-                source={require('../../assets/icons/outline_fav.png')}
+                source={require('../../assets/icons/favorites.png')}
                 style={styles.iconStyle}
               />
             </TouchableOpacity>
