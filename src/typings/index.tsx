@@ -19,4 +19,5 @@ export type MovieDetails = {
   tagline: string;
   overview: string;
   backdrop_path: string;
+  poster_path: string;
 };
