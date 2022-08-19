@@ -1,5 +1,5 @@
 # filmstore
-Technical Tasm
+Technical Task
 
 After cloning, checkout the `development` branch
 
