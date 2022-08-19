@@ -1,55 +1,55 @@
-import {View, Image, Text} from 'react-native';
-import React, {FC, useState, useEffect} from 'react';
+import {View, Image, Text, ScrollView} from 'react-native';
+import React, {FC, useState, useEffect, useCallback} from 'react';
 import styles from './DetailPageStyles';
 import {getMovie} from '../../services/movies/movies';
 import TextHeader from '../../components/TextHeader/TextHeader';
 import {MovieDetails} from '../../typings';
-const CARD_SIZE = 'w400';
 import {getImagePath} from '../../utils/getImagePath';
+import useFavHook from '../../hooks/useFavHook';
+import Favorite from '../../components/Favorite/Favorite';
+
+const CARD_SIZE = 'w400';
 
 const DetailPage: FC<any> = ({route, navigation}) => {
   const {movieId} = route.params;
-  console.log('Movie ID', movieId);
   const [movieDetails, setMovieDetails] = useState<MovieDetails>();
 
-  // const fetchMovie = useCallback(async () => {
-  //   const {id, title, tagline, overview, poster_path} = await getMovie(movieId);
-  //   setMovieDetails({id, title, tagline, overview, poster_path});
-  // }, [movieId]);
-
-  useEffect(() => {
-    console.log('UseEffect called ');
-
-    const fetchMovie = async () => {
-      const {id, title, tagline, overview, backdrop_path} = await getMovie(
-        movieId,
-      );
-      setMovieDetails({id, title, tagline, overview, backdrop_path});
-    };
-
-    fetchMovie().catch(console.error);
+  // const [favMovies, setFavItem, removeFavItem] = useFavHook();
+  const fetchMovie = useCallback(async () => {
+    const {id, title, tagline, overview, backdrop_path, poster_path} =
+      await getMovie(movieId);
+    setMovieDetails({id, title, tagline, overview, backdrop_path, poster_path});
   }, [movieId]);
 
-  console.log('what are details ', movieDetails);
+  useEffect(() => {
+    fetchMovie().catch(console.error);
+  }, [fetchMovie]);
 
   const addToFavorite = () => {
-    console.log('added to fav');
+    //setFavItem(movieDetails);
+  };
+
+  const removeFavorite = () => {
+    //removeFavItem(movieDetails.id);
+  };
+
+  const isFavorite = () => {
+    //return favMovies.find(m => m.id === movieDetails.id);
   };
 
   return (
-    <View style={styles.mainWrapper}>
+    <ScrollView
+      contentContainerStyle={{alignItems: 'center'}}
+      style={styles.mainWrapper}>
       <TextHeader
         onPressBack={() => navigation.goBack()}
         headerText={movieDetails?.title}
-        onPressFav={addToFavorite}
       />
 
       <View style={styles.bodyContainer}>
         {/* TODO in components */}
         <View style={styles.taglineContainer}>
-          <Text style={styles.taglineStyles} numberOfLines={4}>
-            {movieDetails?.tagline}
-          </Text>
+          <Text style={styles.taglineStyles}>{movieDetails?.tagline}</Text>
         </View>
 
         <Image
@@ -58,13 +58,18 @@ const DetailPage: FC<any> = ({route, navigation}) => {
         />
 
         <View style={styles.overviewContainer}>
-          <View style={{marginBottom: 12}}>
+          <View style={styles.overviewFav}>
             <Text style={styles.overviewHeadline}>{'Overview'}</Text>
+            <Favorite
+              isFav={isFavorite}
+              addToFavorite={addToFavorite}
+              removeFavorite={removeFavorite}
+            />
           </View>
           <Text style={styles.overviewStyles}>{movieDetails?.overview}</Text>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

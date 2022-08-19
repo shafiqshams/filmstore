@@ -7,7 +7,6 @@ export default StyleSheet.create({
     display: 'flex',
     flex: 1,
     backgroundColor: colors.black01,
-    alignItems: 'center',
     marginTop: 20,
   },
   bodyContainer: {
@@ -34,6 +33,12 @@ export default StyleSheet.create({
   overviewContainer: {
     flex: 0.85,
     marginTop: 24,
+  },
+  overviewFav: {
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 18,
   },
   overviewHeadline: {
     fontSize: 28,
