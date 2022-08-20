@@ -4,27 +4,18 @@ import styles from '../Favorite/FavoriteStyles';
 
 const Favorite: FC<any> = ({isFav, addToFavorite, removeFavorite}) => {
   return (
-    <>
-      {isFav ? (
-        <TouchableOpacity
-          style={[styles.iconTouchWrapper]}
-          onPress={removeFavorite}>
-          <Image
-            source={require('../../assets/icons/filled_fav.png')}
-            style={styles.iconStyle}
-          />
-        </TouchableOpacity>
-      ) : (
-        <TouchableOpacity
-          style={[styles.iconTouchWrapper]}
-          onPress={addToFavorite}>
-          <Image
-            source={require('../../assets/icons/outline_fav.png')}
-            style={styles.iconStyle}
-          />
-        </TouchableOpacity>
-      )}
-    </>
+    <TouchableOpacity
+      style={[styles.iconTouchWrapper]}
+      onPress={isFav ? removeFavorite : addToFavorite}>
+      <Image
+        source={
+          isFav
+            ? require('../../assets/icons/filled_fav.png')
+            : require('../../assets/icons/outline_fav.png')
+        }
+        style={styles.iconStyle}
+      />
+    </TouchableOpacity>
   );
 };
 
