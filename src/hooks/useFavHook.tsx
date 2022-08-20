@@ -1,52 +1,57 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useState, useCallback} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import {MovieDetails} from '../typings';
+
 const key = 'FAV_MOVIES';
 
 export default function useFavHook() {
   const [favMovies, setFavMovies] = useState<Array<MovieDetails>>([]);
 
-  useEffect(() => {
-    getFavs();
+  // returning array of moives
+  const getFavs = useCallback(async () => {
+    const movies: string | null = await AsyncStorage.getItem(key);
+    setFavMovies(movies ? JSON.parse(movies) : []);
   }, []);
 
-  // returning array of moives
-  const getFavs = async () => {
-    try {
-      const movies: string | null = await AsyncStorage.getItem(key);
-      setFavMovies(movies ? JSON.parse(movies) : []);
-    } catch (error) {
-      console.error(error);
-    }
+  console.log('fav movies ', favMovies);
+
+  // useEffect(() => {
+  //   getFavs();
+  // }, [favMovies, getFavs]);
+
+  useEffect(() => {
+    getFavs();
+  }, [getFavs]);
+
+  const setMovies = async (movies: any) => {
+    setFavMovies(movies);
+    await AsyncStorage.setItem(key, JSON.stringify(movies));
   };
 
-  const setMovies = async (movies: Array<MovieDetails>) => {
-    try {
-      setFavMovies(movies);
-      await AsyncStorage.setItem(key, JSON.stringify(movies));
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const setFavItem = (item: MovieDetails) => {
+  const setFavItem = (item: any): boolean => {
+    console.log('item', item);
+    console.log('favMovies', favMovies);
     const exists = favMovies.find(m => m.id === item.id);
     if (exists) {
-      return;
+      return false;
     }
     if (!exists) {
       const updatedMovies = [...favMovies, item];
+      console.log('updatedMovies ', updatedMovies);
+
       setMovies(updatedMovies);
     }
     return true;
   };
 
-  const removeFavItem = (id: number) => {
-    const index = favMovies.findIndex(m => m.id === id);
-    if (index) {
-      const updatedMovies = favMovies.splice(index, 1);
-      setMovies(updatedMovies);
-    }
+  const removeFavItem = async (id?: number) => {
+    console.log('id removeFavItem', id);
+
+    const updatedMovies = favMovies.filter(movie => movie.id !== id);
+    console.log('updatedMovies ', updatedMovies);
+    setMovies(updatedMovies);
+
     return true;
   };
 
