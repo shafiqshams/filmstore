@@ -14,12 +14,9 @@ const DetailPage: FC<any> = ({route, navigation}) => {
   const {movieId} = route.params;
   const [movieDetails, setMovieDetails] = useState<MovieDetails>();
   const [favMovies, setFavItem, removeFavItem] = useFavHook();
-
   const isFav: boolean = !!favMovies.find(m => m.id === movieDetails?.id);
-  console.log('is Fav ', isFav);
 
   const fetchMovie = useCallback(async () => {
-    console.log('fetching Movie API');
     const {id, title, tagline, overview, backdrop_path, poster_path} =
       await getMovie(movieId);
     setMovieDetails({id, title, tagline, overview, backdrop_path, poster_path});
