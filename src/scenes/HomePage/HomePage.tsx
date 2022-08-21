@@ -11,11 +11,15 @@ import {Movie, Category} from '../../typings';
 import Headline from '../../components/Headline/Headline';
 import TextHeader from '../../components/TextHeader/TextHeader';
 import {APP_NAME} from '../../services/helpers/config';
+import useFavHook from '../../hooks/useFavHook';
+import {useIsFocused} from '@react-navigation/native';
 
 const HomePage: FC<any> = ({navigation}) => {
   const [categories, setCategories] = useState<Array<Category>>([]);
   const [allMovies, setAllMovies] = useState<Array<Movie>>([]);
-
+  const [favMovies, setFavItem, removeFavItem, getFavs] = useFavHook();
+  const isFocused = useIsFocused();
+  const [showFavs, setShowFavs] = useState(false);
   useEffect(() => {
     //First fetching the categories
     fetchCategories();
@@ -25,6 +29,13 @@ const HomePage: FC<any> = ({navigation}) => {
     const {genres} = await getCategories();
     setCategories(genres);
   };
+
+  useEffect(() => {
+    // // Call only when screen open or when back on screen
+    if (isFocused && showFavs) {
+      getFavs();
+    }
+  }, [isFocused, showFavs, getFavs]);
 
   useEffect(() => {
     let movies: Array<Movie> = [];
@@ -47,9 +58,18 @@ const HomePage: FC<any> = ({navigation}) => {
     fetchData();
   }, [categories]);
 
-  const showFavorites = () => {
-    // TODO
-    // Fetch favorites and update movies list
+  const toggleFavs = () => {
+    showFavs ? setShowFavs(false) : setShowFavs(true);
+  };
+
+  // Also possible to Navigate to Favorites screen.
+  const renderFavorites = () => {
+    return (
+      <View style={styles.carouselWrapper}>
+        <Headline title={'Favorites'} />
+        <Carousel movies={favMovies} onPressMovie={handlePress} />
+      </View>
+    );
   };
 
   const handlePress = (movieId: number) => {
@@ -74,10 +94,10 @@ const HomePage: FC<any> = ({navigation}) => {
       <>
         <TextHeader
           headerText={APP_NAME}
-          onPressFav={showFavorites}
+          onPressFav={toggleFavs}
           textStyle={styles.textStyle}
         />
-        {renderMovies()}
+        {showFavs ? renderFavorites() : renderMovies()}
       </>
     </ScrollView>
   );

@@ -43,5 +43,5 @@ export default function useFavHook() {
     setMovies(updatedMovies);
   };
 
-  return [favMovies, setFavItem, removeFavItem] as const;
+  return [favMovies, setFavItem, removeFavItem, getFavs] as const;
 }
