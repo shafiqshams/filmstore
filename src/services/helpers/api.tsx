@@ -5,8 +5,6 @@ export const getFetch = (url: string, params = {}) => {
     })
     .join('&');
 
-  console.log('URL: ', `${url}?${queryString}`);
-
   return fetch(`${url}?${queryString}`, {
     method: 'GET',
     headers: {
