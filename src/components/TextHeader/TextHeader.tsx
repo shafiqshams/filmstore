@@ -1,7 +1,6 @@
 import React, {FC} from 'react';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
 import styles from './TextHeaderStyles';
-// import { IHeader } from '../../typings';
 
 const TextHeader: FC<any> = ({
   headerText,

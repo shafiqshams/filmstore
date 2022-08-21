@@ -31,7 +31,7 @@ const HomePage: FC<any> = ({navigation}) => {
   };
 
   useEffect(() => {
-    // // Call only when screen open or when back on screen
+    // Call only when screen open or when back on screen
     if (isFocused && showFavs) {
       getFavs();
     }
