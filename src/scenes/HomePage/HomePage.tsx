@@ -11,15 +11,11 @@ import {Movie, Category} from '../../typings';
 import Headline from '../../components/Headline/Headline';
 import TextHeader from '../../components/TextHeader/TextHeader';
 import {APP_NAME} from '../../services/helpers/config';
-import useFavHook from '../../hooks/useFavHook';
-import {useIsFocused} from '@react-navigation/native';
 
 const HomePage: FC<any> = ({navigation}) => {
   const [categories, setCategories] = useState<Array<Category>>([]);
   const [allMovies, setAllMovies] = useState<Array<Movie>>([]);
-  const [favMovies, setFavItem, removeFavItem, getFavs] = useFavHook();
-  const isFocused = useIsFocused();
-  const [showFavs, setShowFavs] = useState(false);
+
   useEffect(() => {
     //First fetching the categories
     fetchCategories();
@@ -31,13 +27,6 @@ const HomePage: FC<any> = ({navigation}) => {
   };
 
   useEffect(() => {
-    // Call only when screen open or when back on screen
-    if (isFocused && showFavs) {
-      getFavs();
-    }
-  }, [isFocused, showFavs, getFavs]);
-
-  useEffect(() => {
     let movies: Array<Movie> = [];
     const slicedCategories = categories.slice(0, 3);
     const fetchData = async () => {
@@ -47,32 +36,22 @@ const HomePage: FC<any> = ({navigation}) => {
           item.id,
           getRandomNumber(),
         );
-        movies.push({
-          key: item.id.toString(),
-          type: item.name,
-          data: results,
-        });
+
+        movies = [
+          ...movies,
+          {key: item.id.toString(), type: item.name, data: results},
+        ];
       }
       setAllMovies(movies);
     };
     fetchData();
   }, [categories]);
 
-  const toggleFavs = () => {
-    showFavs ? setShowFavs(false) : setShowFavs(true);
+  const handlePressFavorites = () => {
+    navigation.navigate('Favorites');
   };
 
-  // Also possible to Navigate to Favorites screen.
-  const renderFavorites = () => {
-    return (
-      <View style={styles.carouselWrapper}>
-        <Headline title={'Favorites'} />
-        <Carousel movies={favMovies} onPressMovie={handlePress} />
-      </View>
-    );
-  };
-
-  const handlePress = (movieId: number) => {
+  const handlePressMovie = (movieId: number) => {
     navigation.navigate('Details', {
       movieId: movieId,
     });
@@ -83,7 +62,7 @@ const HomePage: FC<any> = ({navigation}) => {
       return (
         <View key={movie.key} style={styles.carouselWrapper}>
           <Headline title={movie.type} />
-          <Carousel movies={movie.data} onPressMovie={handlePress} />
+          <Carousel movies={movie.data} onPressMovie={handlePressMovie} />
         </View>
       );
     });
@@ -91,14 +70,12 @@ const HomePage: FC<any> = ({navigation}) => {
 
   return (
     <ScrollView style={styles.mainWrapper}>
-      <>
-        <TextHeader
-          headerText={APP_NAME}
-          onPressFav={toggleFavs}
-          textStyle={styles.textStyle}
-        />
-        {showFavs ? renderFavorites() : renderMovies()}
-      </>
+      <TextHeader
+        headerText={APP_NAME}
+        onPressFav={handlePressFavorites}
+        textStyle={styles.textStyle}
+      />
+      {renderMovies()}
     </ScrollView>
   );
 };
