@@ -1,6 +1,5 @@
 import {useEffect, useState, useCallback} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
 import {MovieDetails} from '../typings';
 
 const key = 'FAV_MOVIES';
@@ -43,5 +42,5 @@ export default function useFavHook() {
     setMovies(updatedMovies);
   };
 
-  return [favMovies, setFavItem, removeFavItem, getFavs] as const;
+  return {favMovies, setFavItem, removeFavItem, getFavs};
 }

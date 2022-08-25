@@ -13,7 +13,7 @@ const CARD_SIZE = 'w400';
 const DetailPage: FC<any> = ({route, navigation}) => {
   const {movieId} = route.params;
   const [movieDetails, setMovieDetails] = useState<MovieDetails>();
-  const [favMovies, setFavItem, removeFavItem] = useFavHook();
+  const {favMovies, setFavItem, removeFavItem} = useFavHook();
   const isFav: boolean = !!favMovies.find(m => m.id === movieDetails?.id);
 
   const fetchMovie = useCallback(async () => {
