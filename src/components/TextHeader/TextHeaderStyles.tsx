@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {Fonts} from '../../assets/fonts';
 import colors from '../../styles/colors';
 
 const styles = StyleSheet.create({
@@ -20,7 +21,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 32,
     color: colors.red,
-    fontFamily: 'Weast-hood',
+    fontFamily: Fonts.WeastHood,
     letterSpacing: 0.2,
   },
 

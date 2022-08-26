@@ -1,4 +1,5 @@
 import {StyleSheet, Dimensions} from 'react-native';
+import {Fonts} from '../../assets/fonts';
 import colors from '../../styles/colors';
 const {width} = Dimensions.get('window');
 
@@ -8,6 +9,9 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: colors.black01,
     marginTop: 20,
+  },
+  containerStyles: {
+    alignItems: 'center',
   },
   bodyContainer: {
     flex: 1,
@@ -21,7 +25,7 @@ export default StyleSheet.create({
     textAlign: 'center',
     fontSize: 18,
     color: colors.white,
-    fontFamily: 'ComicSans-Italic',
+    fontFamily: Fonts.ComicSansItalic,
     letterSpacing: 0.2,
   },
   imageStyle: {
@@ -43,13 +47,13 @@ export default StyleSheet.create({
   overviewHeadline: {
     fontSize: 28,
     color: colors.red,
-    fontFamily: 'Weast-hood',
+    fontFamily: Fonts.WeastHood,
   },
   overviewStyles: {
     textAlign: 'left',
     fontSize: 16,
     color: colors.white,
-    fontFamily: 'ComicSans-Regular',
+    fontFamily: Fonts.OpenSans,
     letterSpacing: 0.8,
   },
 });

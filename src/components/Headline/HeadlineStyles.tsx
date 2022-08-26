@@ -1,4 +1,5 @@
 import {StyleSheet, Dimensions} from 'react-native';
+import {Fonts} from '../../assets/fonts';
 import colors from '../../styles/colors';
 const {width} = Dimensions.get('window');
 
@@ -10,7 +11,7 @@ export default StyleSheet.create({
   textStyle: {
     fontSize: 20,
     color: colors.white,
-    fontFamily: 'ComicSans-Regular',
+    fontFamily: Fonts.ComicSans,
   },
   underLineStyle: {
     width: width,

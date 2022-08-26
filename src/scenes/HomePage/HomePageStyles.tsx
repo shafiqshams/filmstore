@@ -1,5 +1,6 @@
 import {Dimensions, StyleSheet} from 'react-native';
 import colors from '../../styles/colors';
+import {Fonts} from '../../assets/fonts';
 const {width} = Dimensions.get('window');
 
 export default StyleSheet.create({
@@ -16,7 +17,7 @@ export default StyleSheet.create({
   textStyle: {
     fontSize: 32,
     color: colors.red,
-    fontFamily: 'Weast-hood',
+    fontFamily: Fonts.WeastHood,
     letterSpacing: 0.2,
   },
 });
