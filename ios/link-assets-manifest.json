@@ -2,18 +2,6 @@
   "migIndex": 1,
   "data": [
     {
-      "path": "src/assets/fonts/BebasNeue-Bold.ttf",
-      "sha1": "05cf9bfc05427c7b10ede7f8a7c15fa437b4764c"
-    },
-    {
-      "path": "src/assets/fonts/BebasNeue-Regular.ttf",
-      "sha1": "eef7db3112d4ff2f8e161146408b196e375adc84"
-    },
-    {
-      "path": "src/assets/fonts/ComicSans-Bold.ttf",
-      "sha1": "4670365d99eb047d2fba6c3ac2a398276e37555b"
-    },
-    {
       "path": "src/assets/fonts/ComicSans-Italic.ttf",
       "sha1": "42722080d43013926183eea1c6a7f4b194e9aa45"
     },
@@ -26,16 +14,28 @@
       "sha1": "babe8dce93a3e48b6c3c79720a0c048e88dd1fe7"
     },
     {
-      "path": "src/assets/fonts/OpenSans-RegularItalic.ttf",
-      "sha1": "b8d9f5ceb1e6b3a716dab0bdd09061bbc349b41e"
-    },
-    {
-      "path": "src/assets/fonts/OpenSans-SemiBold.ttf",
-      "sha1": "e256f8391718ef61f253dfb4e95bbeb3c5857afc"
-    },
-    {
       "path": "src/assets/fonts/Weast-hood.ttf",
       "sha1": "511841f3849911fd02f0a07b20b091461c1cd120"
+    },
+    {
+      "path": "src/assets/fonts/index.tsx",
+      "sha1": "b29abc08265fd181f085a51a2d4ed509a73fb88f"
+    },
+    {
+      "path": "src/assets/icons/back_arrow.png",
+      "sha1": "4e7fccfe0e587729421fe7a0ae1e8176632e6fd0"
+    },
+    {
+      "path": "src/assets/icons/favorites.png",
+      "sha1": "b1b7d92193ce404850cda1645ee4a28568976b53"
+    },
+    {
+      "path": "src/assets/icons/filled_fav.png",
+      "sha1": "2d456731f0abd81c6a5a0e1f6df8a0c5dca99b44"
+    },
+    {
+      "path": "src/assets/icons/outline_fav.png",
+      "sha1": "47faa0ea618d567d46ce2803e0c061905fb33ad7"
     }
   ]
 }
