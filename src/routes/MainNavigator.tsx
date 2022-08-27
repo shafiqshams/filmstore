@@ -4,8 +4,9 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScene from '../scenes/HomePage/HomePage';
 import FavoritesPage from '../scenes/FavoritesPage/FavoritesPage';
 import DetailPage from '../scenes/DetailPage/DetailPage';
+import {RootStackParamList} from '../typings/index';
 
-const HomeStack = createNativeStackNavigator();
+const HomeStack = createNativeStackNavigator<RootStackParamList>();
 
 export function AppNavigator() {
   return (

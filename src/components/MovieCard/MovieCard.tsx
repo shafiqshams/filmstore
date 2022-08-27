@@ -2,7 +2,9 @@ import {Image, TouchableOpacity} from 'react-native';
 import React from 'react';
 import styles from './MovieCardStyles';
 import {getImagePath} from '../../utils/getImagePath';
-const MovieCard = (props: any) => {
+import {MovieCardProps} from '../../typings';
+
+const MovieCard = (props: MovieCardProps) => {
   const {movieItem, onPressMovie} = props;
   const {id, poster_path} = movieItem;
   const CARD_SIZE = 'w200';

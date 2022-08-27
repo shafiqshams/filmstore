@@ -1,9 +1,9 @@
 import {View, Text} from 'react-native';
-import React, {FC} from 'react';
+import React from 'react';
 import styles from './HeadlineStyles';
 import {Title} from '../../typings';
 
-const Headline: FC<Title> = ({title}) => {
+const Headline = ({title}: Title) => {
   return (
     <View style={styles.titleContainer}>
       <Text style={styles.textStyle}>{title}</Text>

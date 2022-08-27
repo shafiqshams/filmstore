@@ -1,16 +1,16 @@
 import {View, Image, Text, ScrollView} from 'react-native';
-import React, {FC, useState, useEffect, useCallback} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import styles from './DetailPageStyles';
 import {getMovie} from '../../services/movies/movies';
 import TextHeader from '../../components/TextHeader/TextHeader';
-import {MovieDetails} from '../../typings';
+import {DetailsProps, MovieDetails} from '../../typings';
 import {getImagePath} from '../../utils/getImagePath';
 import useFavHook from '../../hooks/useFavHook';
 import Favorite from '../../components/Favorite/Favorite';
 
 const CARD_SIZE = 'w400';
 
-const DetailPage: FC<any> = ({route, navigation}) => {
+const DetailPage = ({route, navigation}: DetailsProps) => {
   const {movieId} = route.params;
   const [movieDetails, setMovieDetails] = useState<MovieDetails>();
   const {favMovies, setFavItem, removeFavItem} = useFavHook();
@@ -27,7 +27,7 @@ const DetailPage: FC<any> = ({route, navigation}) => {
   }, [fetchMovie]);
 
   const addToFavorite = () => {
-    setFavItem(movieDetails);
+    setFavItem(movieDetails!);
   };
 
   const removeFavorite = () => {
@@ -36,7 +36,7 @@ const DetailPage: FC<any> = ({route, navigation}) => {
 
   return (
     <ScrollView
-      contentContainerStyle={{alignItems: 'center'}}
+      contentContainerStyle={styles.containerStyles}
       style={styles.mainWrapper}>
       <TextHeader
         onPressBack={() => navigation.goBack()}
@@ -44,7 +44,6 @@ const DetailPage: FC<any> = ({route, navigation}) => {
       />
 
       <View style={styles.bodyContainer}>
-        {/* TODO in components */}
         <View style={styles.taglineContainer}>
           <Text style={styles.taglineStyles}>{movieDetails?.tagline}</Text>
         </View>

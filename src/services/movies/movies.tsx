@@ -17,7 +17,7 @@ export function getMoviesByCategoryId(genreId: number, page: number) {
   });
 }
 
-export function getMovie(movieId: any) {
+export function getMovie(movieId: number) {
   const URL = BASE_URL + 'movie/' + movieId;
   return getFetch(URL, {
     api_key: API_KEY,

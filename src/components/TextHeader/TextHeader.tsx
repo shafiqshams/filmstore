@@ -1,13 +1,10 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
+import {TextHeaderProps} from '../../typings';
 import styles from './TextHeaderStyles';
 
-const TextHeader: FC<any> = ({
-  headerText,
-  onPressBack,
-  onPressFav,
-  textStyle,
-}) => {
+const TextHeader = (props: TextHeaderProps) => {
+  const {headerText, onPressBack, onPressFav} = props;
   return (
     <View style={styles.headerWrapper}>
       <View style={styles.iconWrapper}>
@@ -24,16 +21,14 @@ const TextHeader: FC<any> = ({
       </View>
 
       <View style={styles.textWrapper}>
-        <Text style={[styles.headerText, textStyle]}>
-          {headerText?.toUpperCase()}
-        </Text>
+        <Text style={styles.headerText}>{headerText?.toUpperCase()}</Text>
       </View>
 
       <View style={styles.iconWrapper}>
         {onPressFav && (
           <View style={styles.iconWrapper}>
             <TouchableOpacity
-              style={[styles.iconTouchWrapper]}
+              style={styles.iconTouchWrapper}
               onPress={onPressFav}>
               <Image
                 source={require('../../assets/icons/favorites.png')}

@@ -1,5 +1,5 @@
 import {ScrollView, View} from 'react-native';
-import React, {FC, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './HomePageStyles';
 import Carousel from '../../components/Carousel/Carousel';
 import {getRandomNumber} from '../../utils/getRandomNumber';
@@ -7,12 +7,12 @@ import {
   getCategories,
   getMoviesByCategoryId,
 } from '../../services/movies/movies';
-import {Movie, Category} from '../../typings';
+import {NavigationProps, Movie, Category} from '../../typings';
 import Headline from '../../components/Headline/Headline';
 import TextHeader from '../../components/TextHeader/TextHeader';
 import {APP_NAME} from '../../services/helpers/config';
 
-const HomePage: FC<any> = ({navigation}) => {
+const HomePage = ({navigation}: NavigationProps) => {
   const [categories, setCategories] = useState<Array<Category>>([]);
   const [allMovies, setAllMovies] = useState<Array<Movie>>([]);
 
@@ -39,7 +39,11 @@ const HomePage: FC<any> = ({navigation}) => {
 
         movies = [
           ...movies,
-          {key: item.id.toString(), type: item.name, data: results},
+          {
+            key: item.id.toString(),
+            type: item.name,
+            data: results,
+          },
         ];
       }
       setAllMovies(movies);
@@ -70,12 +74,8 @@ const HomePage: FC<any> = ({navigation}) => {
 
   return (
     <ScrollView style={styles.mainWrapper}>
-      <TextHeader
-        headerText={APP_NAME}
-        onPressFav={handlePressFavorites}
-        textStyle={styles.textStyle}
-      />
-      {renderMovies()}
+      <TextHeader headerText={APP_NAME} onPressFav={handlePressFavorites} />
+      <View style={styles.contentWrapper}>{renderMovies()}</View>
     </ScrollView>
   );
 };

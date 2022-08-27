@@ -32,7 +32,7 @@ export default function useFavHook() {
     }
   };
 
-  const setFavItem = (item: any) => {
+  const setFavItem = (item: MovieDetails) => {
     const updatedMovies = [...favMovies, item];
     setMovies(updatedMovies);
   };
