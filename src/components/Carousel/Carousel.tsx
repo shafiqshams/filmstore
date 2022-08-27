@@ -1,26 +1,23 @@
-import {View, FlatList, useWindowDimensions} from 'react-native';
+import {SafeAreaView, FlatList, useWindowDimensions} from 'react-native';
 import React from 'react';
 import MovieCard from '../MovieCard/MovieCard';
-const CARD_SIZE = 200;
-const Carousel = (props: any) => {
+import {CarouselProps} from '../../typings';
+
+const Carousel = (props: CarouselProps) => {
   const {movies, onPressMovie} = props;
 
   return (
-    <View style={{width: useWindowDimensions().width}}>
+    <SafeAreaView style={{width: useWindowDimensions().width - 15}}>
       <FlatList
         data={movies}
         renderItem={({item}) => (
           <MovieCard movieItem={item} onPressMovie={onPressMovie} />
         )}
-        keyExtractor={item => item.id}
+        keyExtractor={item => `key-${item.id}`}
         horizontal
-        showsHorizontalScrollIndicator
-        pagingEnabled
         bounces={false}
-        snapToInterval={CARD_SIZE}
-        decelerationRate={2}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 
