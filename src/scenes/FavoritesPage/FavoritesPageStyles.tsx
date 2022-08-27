@@ -8,10 +8,10 @@ export default StyleSheet.create({
     display: 'flex',
     flex: 1,
     backgroundColor: colors.black01,
-    marginTop: 20,
+    paddingTop: 20,
   },
   carouselWrapper: {
-    width: width - 30,
+    width: width,
     margin: 15,
   },
   textStyle: {

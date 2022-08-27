@@ -8,7 +8,7 @@ export default StyleSheet.create({
     display: 'flex',
     flex: 1,
     backgroundColor: colors.black01,
-    marginTop: 20,
+    paddingTop: 20,
   },
   containerStyles: {
     alignItems: 'center',
