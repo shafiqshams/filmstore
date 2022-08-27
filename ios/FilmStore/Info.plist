@@ -53,12 +53,10 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>ComicSans-Bold.ttf</string>
 		<string>ComicSans-Italic.ttf</string>
 		<string>ComicSans-Regular.ttf</string>
 		<string>OpenSans-Regular.ttf</string>
-		<string>OpenSans-RegularItalic.ttf</string>
-		<string>OpenSans-SemiBold.ttf</string>
+		<string>Weast-hood.ttf</string>
 	</array>
 </dict>
 </plist>
