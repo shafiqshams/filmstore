@@ -1,8 +1,9 @@
-import React, {FC} from 'react';
+import React from 'react';
 import {TouchableOpacity, Image} from 'react-native';
 import styles from '../Favorite/FavoriteStyles';
-
-const Favorite: FC<any> = ({isFav, addToFavorite, removeFavorite}) => {
+import {FavoriteProps} from '../../typings';
+const Favorite = (props: FavoriteProps) => {
+  const {isFav, addToFavorite, removeFavorite} = props;
   return (
     <TouchableOpacity
       style={[styles.iconTouchWrapper]}
